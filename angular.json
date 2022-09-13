@@ -61,6 +61,20 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "my_dev": {
+              "index": {
+                "input": "src/index-my-app.html",
+                "output": "index.html"
+              },
+              "main": "src/main-my-app.ts",
+              "tsConfig": "tsconfig.my-app.json",
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -73,6 +87,9 @@
             },
             "development": {
               "browserTarget": "ng-training:build:development"
+            },
+            "my_dev": {
+              "browserTarget": "ng-training:build:my_dev"
             }
           },
           "defaultConfiguration": "development"
