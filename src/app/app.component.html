@@ -1,6 +1,17 @@
 <p>Hello app component</p>
 
 
-hey default app
+<p>hey default app</p>
 
-<app-login></app-login>
+<p>Interpolation</p>
+
+<input #inputField (keydown)="changeTitle(inputField)">
+
+<p>App component title is {{ title }}</p>
+
+<!--
+Noway data binding
+<app-login name="{{title}}"></app-login>
+-->
+
+<app-login [name]="title" (gotoEvent)="test($event)"></app-login>

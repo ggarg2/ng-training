@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-training';
+
+  title: any = "Hello world";
+
+  changeTitle(inputField: any) {
+    this.title = inputField?.value
+  }
+
+  test(event: any) {
+    console.log(
+      'Inside test method'
+    );
+    console.log('event is ', event);
+  }
+
 }
