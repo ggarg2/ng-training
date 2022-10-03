@@ -1,17 +1,50 @@
-<p>Hello app component</p>
+<h1 #helloForm>Hello Form</h1>
 
 
-<p>hey default app</p>
+<form #myForm="ngForm">
 
-<p>Interpolation</p>
+  <div>
+    <label>First Name</label>
+    <input [(ngModel)]="firstName" type="text" name="firstName">
+  </div>
 
-<input #inputField (keydown)="changeTitle(inputField)">
+  <div>
+    <label>Email Id</label>
+    <input
+      #emailIdControl="ngModel"
+      [(ngModel)]="emailId"
+      type="email"
+      name="emailId122"
+      [required]="true"
+      [email]="true"
+    >
 
-<p>App component title is {{ title }}</p>
+    {{ emailIdControl.errors | json }}
 
-<!--
-Noway data binding
-<app-login name="{{title}}"></app-login>
--->
+    <div *ngIf="emailIdControl?.invalid && emailIdControl?.touched && emailIdControl?.errors">
+      <div *ngIf="emailIdControl?.errors['required']">This field is required</div>
+      <div *ngIf="emailIdControl?.errors['email']">Please enter valid email address</div>
+      <div *ngIf="emailIdControl?.errors['customError']">This is my error</div>
+    </div>
+  </div>
 
-<app-login [name]="title" (gotoEvent)="test($event)"></app-login>
+  <div>
+    <label>Phone Number</label>
+    <input #phoneNumberControl="ngModel" [(ngModel)]="phoneNumber" type="number" name="phoneNumber" [required]="true">
+    <div *ngIf="phoneNumberControl?.invalid && phoneNumberControl?.touched">
+      <div>This field is required</div>
+    </div>
+  </div>
+
+
+  <div *ngFor="let i of [1,2,3]; let index = index;">
+    Nested Form
+    <app-nested-form [index]="index"></app-nested-form>
+  </div>
+
+  <div>
+    <button (click)="assignSomeDefaultName()">Assign Default Name</button>
+    <button (click)="submit(myForm)" [disabled]="myForm?.invalid">Submit</button>
+    <button (click)="reset(myForm)">Reset</button>
+  </div>
+</form>

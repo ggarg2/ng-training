@@ -1,0 +1,14 @@
+<p>nested-form works!</p>
+=========================================
+<div>
+
+  <div>
+    <label>Company name</label>
+    <input [(ngModel)]="companyName" name="companyName-{{ index }}" [required]="true">
+  </div>
+  <div>
+    <label>Product Name</label>
+    <input [(ngModel)]="productName" name="productName-{{ index }}" [required]="true">
+  </div>
+
+</div>
